@@ -72,25 +72,9 @@ var decoratedFileProps = {
 		}
 	},
 	readAsString: {
-		value: function () {
-			const buffer = this.buffer;
-			const charCount = buffer.byteLength;
-			const bufferView = new DataView(buffer);
-
-			const chunkSize = 65536; // Process in chunks of 64KB
-			let result = '';
-
-			for (let offset = 0; offset < charCount; offset +=chunkSize) { 
-				const chunk=[];
-				const end=Math.min(offset + chunkSize, charCount);
-				for (let i=offset; i < end; ++i) {
-					const charCode=bufferView.getUint8(i);
-					chunk.push(charCode); 
-				}
-				result +=String.fromCharCode.apply(null, chunk); 
-			} 
-			return (this._string=result); 
-		}, 
+		value: function() {
+			return new TextDecoder().decode(this.buffer);
+		}
 	},
 	readAsJSON: {
 		value: function() {
