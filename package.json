@@ -26,6 +26,7 @@
   "bugs": {
     "url": "https://github.com/InvokIT/js-untar/issues"
   },
+  "types" : "index.d.js",
   "homepage": "https://github.com/InvokIT/js-untar",
   "devDependencies": {
     "gulp": "4.0.2",
